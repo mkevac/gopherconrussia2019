@@ -27,12 +27,18 @@ func indexes(a []byte) []int {
 }
 
 func and(a []byte, b []byte, res []byte) {
+	if len(a) != len(b) || len(b) != len(res) {
+		return
+	}
 	for i := 0; i < len(a); i++ {
 		res[i] = a[i] & b[i]
 	}
 }
 
 func andnot(a []byte, b []byte, res []byte) {
+	if len(a) != len(b) || len(b) != len(res) {
+		return
+	}
 	for i := 0; i < len(a); i++ {
 		res[i] = a[i] & ^b[i]
 	}

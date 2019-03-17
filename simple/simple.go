@@ -42,6 +42,22 @@ loop:
 	}
 }
 
+func andInlinedAndNoBoundsCheck(a []byte, b []byte, res []byte) {
+	if len(a) != len(b) || len(b) != len(res) {
+		return
+	}
+
+	i := 0
+	l := len(a)
+
+loop:
+	res[i] = a[i] & b[i]
+	i++
+	if i != l {
+		goto loop
+	}
+}
+
 func or(a []byte, b []byte, res []byte) {
 	for i := 0; i < len(a); i++ {
 		res[i] = a[i] | b[i]
@@ -60,18 +76,16 @@ loop:
 	}
 }
 
-func not(a []byte, res []byte) {
-	for i := 0; i < len(a); i++ {
-		res[i] = ^a[i]
+func orInlinedAndNoBoundsCheck(a []byte, b []byte, res []byte) {
+	if len(a) != len(b) || len(b) != len(res) {
+		return
 	}
-}
 
-func notInlined(a []byte, res []byte) {
 	i := 0
 	l := len(a)
 
 loop:
-	res[i] = ^a[i]
+	res[i] = a[i] | b[i]
 	i++
 	if i != l {
 		goto loop
@@ -85,6 +99,22 @@ func andnot(a []byte, b []byte, res []byte) {
 }
 
 func andnotInlined(a []byte, b []byte, res []byte) {
+	i := 0
+	l := len(a)
+
+loop:
+	res[i] = a[i] & ^b[i]
+	i++
+	if i != l {
+		goto loop
+	}
+}
+
+func andnotInlinedAndNoBoundsCheck(a []byte, b []byte, res []byte) {
+	if len(a) != len(b) || len(b) != len(res) {
+		return
+	}
+
 	i := 0
 	l := len(a)
 

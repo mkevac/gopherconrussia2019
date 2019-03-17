@@ -69,3 +69,16 @@ func BenchmarkSimpleBitmapIndexInlined(b *testing.B) {
 		andInlined(reservations, resBitmap, resBitmap)
 	}
 }
+
+func BenchmarkSimpleBitmapIndexInlinedAndNoBoundsCheck(b *testing.B) {
+	_, _, terrace, reservations, _, expensive := initData()
+
+	resBitmap := make([]byte, bitmapLength)
+
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		andnotInlinedAndNoBoundsCheck(terrace, expensive, resBitmap)
+		andInlinedAndNoBoundsCheck(reservations, resBitmap, resBitmap)
+	}
+}
