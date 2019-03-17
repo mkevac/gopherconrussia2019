@@ -154,3 +154,75 @@ blockloop:
 
 tail:
 	RET
+
+// func andScalar(a []byte, b []byte, res []byte)
+TEXT ·andScalar(SB), NOSPLIT, $0-72
+	MOVQ a_base+0(FP), AX
+	MOVQ b_base+24(FP), CX
+	MOVQ res_base+48(FP), DX
+	MOVQ a_len+8(FP), BX
+	XORQ BP, BP
+
+loop:
+	// Loop until zero bytes remain.
+	CMPQ BX, $0x00
+	JE   done
+	MOVQ (CX), BP
+	ANDQ (AX), BP
+	MOVQ BP, (DX)
+	ADDQ $0x00000008, AX
+	ADDQ $0x00000008, CX
+	ADDQ $0x00000008, DX
+	SUBQ $0x00000008, BX
+	JMP  loop
+
+done:
+	RET
+
+// func orScalar(a []byte, b []byte, res []byte)
+TEXT ·orScalar(SB), NOSPLIT, $0-72
+	MOVQ a_base+0(FP), AX
+	MOVQ b_base+24(FP), CX
+	MOVQ res_base+48(FP), DX
+	MOVQ a_len+8(FP), BX
+	XORQ BP, BP
+
+loop:
+	// Loop until zero bytes remain.
+	CMPQ BX, $0x00
+	JE   done
+	MOVQ (CX), BP
+	ORQ  (AX), BP
+	MOVQ BP, (DX)
+	ADDQ $0x00000008, AX
+	ADDQ $0x00000008, CX
+	ADDQ $0x00000008, DX
+	SUBQ $0x00000008, BX
+	JMP  loop
+
+done:
+	RET
+
+// func andnotScalar(a []byte, b []byte, res []byte)
+TEXT ·andnotScalar(SB), NOSPLIT, $0-72
+	MOVQ a_base+0(FP), AX
+	MOVQ b_base+24(FP), CX
+	MOVQ res_base+48(FP), DX
+	MOVQ a_len+8(FP), BX
+	XORQ BP, BP
+
+loop:
+	// Loop until zero bytes remain.
+	CMPQ  BX, $0x00
+	JE    done
+	MOVQ  (CX), BP
+	ANDNQ (AX), BP, BP
+	MOVQ  BP, (DX)
+	ADDQ  $0x00000008, AX
+	ADDQ  $0x00000008, CX
+	ADDQ  $0x00000008, DX
+	SUBQ  $0x00000008, BX
+	JMP   loop
+
+done:
+	RET

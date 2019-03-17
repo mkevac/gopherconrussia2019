@@ -33,66 +33,148 @@ func initData() ([]byte, []byte, []byte, []byte, []byte, []byte) {
 
 func TestSIMDSimpleAnd(t *testing.T) {
 	var (
-		bitmapA   = make([]byte, bitmapLength)
-		bitmapB   = make([]byte, bitmapLength)
-		bitmapRes = make([]byte, bitmapLength)
+		bitmapA = make([]byte, bitmapLength)
+		bitmapB = make([]byte, bitmapLength)
 	)
 
-	for i := 0; i < len(bitmapRes); i++ {
+	for i := 0; i < len(bitmapA); i++ {
 		bitmapA[i] = 3 << 1
 		bitmapB[i] = 3
 	}
 
-	andSIMD(bitmapA, bitmapB, bitmapRes)
+	t.Run("go", func(t *testing.T) {
 
-	for i := 0; i < len(bitmapRes); i++ {
-		if bitmapRes[i] != 2 {
-			t.Fatalf("byte %d of result is %d (expected 2)", i, bitmapRes[i])
+		var bitmapRes = make([]byte, bitmapLength)
+
+		and(bitmapA, bitmapB, bitmapRes)
+
+		for i := 0; i < len(bitmapRes); i++ {
+			if bitmapRes[i] != 2 {
+				t.Fatalf("byte %d of result is %d (expected 2)", i, bitmapRes[i])
+			}
 		}
-	}
+	})
+
+	t.Run("scalar", func(t *testing.T) {
+
+		var bitmapRes = make([]byte, bitmapLength)
+
+		andScalar(bitmapA, bitmapB, bitmapRes)
+
+		for i := 0; i < len(bitmapRes); i++ {
+			if bitmapRes[i] != 2 {
+				t.Fatalf("byte %d of result is %d (expected 2)", i, bitmapRes[i])
+			}
+		}
+	})
+
+	t.Run("simd", func(t *testing.T) {
+
+		var bitmapRes = make([]byte, bitmapLength)
+
+		andSIMD(bitmapA, bitmapB, bitmapRes)
+
+		for i := 0; i < len(bitmapRes); i++ {
+			if bitmapRes[i] != 2 {
+				t.Fatalf("byte %d of result is %d (expected 2)", i, bitmapRes[i])
+			}
+		}
+	})
 }
 
 func TestSIMDSimpleOr(t *testing.T) {
 	var (
-		bitmapA   = make([]byte, bitmapLength)
-		bitmapB   = make([]byte, bitmapLength)
-		bitmapRes = make([]byte, bitmapLength)
+		bitmapA = make([]byte, bitmapLength)
+		bitmapB = make([]byte, bitmapLength)
 	)
 
-	for i := 0; i < len(bitmapRes); i++ {
+	for i := 0; i < len(bitmapA); i++ {
 		bitmapA[i] = 3 << 1
 		bitmapB[i] = 3
 	}
 
-	orSIMD(bitmapA, bitmapB, bitmapRes)
+	t.Run("go", func(t *testing.T) {
 
-	for i := 0; i < len(bitmapRes); i++ {
-		if bitmapRes[i] != 7 {
-			t.Fatalf("byte %d of result is %d (expected 7)", i, bitmapRes[i])
+		var bitmapRes = make([]byte, bitmapLength)
+		or(bitmapA, bitmapB, bitmapRes)
+
+		for i := 0; i < len(bitmapRes); i++ {
+			if bitmapRes[i] != 7 {
+				t.Fatalf("byte %d of result is %d (expected 7)", i, bitmapRes[i])
+			}
 		}
-	}
+
+	})
+
+	t.Run("scalar", func(t *testing.T) {
+		var bitmapRes = make([]byte, bitmapLength)
+		orScalar(bitmapA, bitmapB, bitmapRes)
+
+		for i := 0; i < len(bitmapRes); i++ {
+			if bitmapRes[i] != 7 {
+				t.Fatalf("byte %d of result is %d (expected 7)", i, bitmapRes[i])
+			}
+		}
+	})
+
+	t.Run("simd", func(t *testing.T) {
+		var bitmapRes = make([]byte, bitmapLength)
+		orSIMD(bitmapA, bitmapB, bitmapRes)
+
+		for i := 0; i < len(bitmapRes); i++ {
+			if bitmapRes[i] != 7 {
+				t.Fatalf("byte %d of result is %d (expected 7)", i, bitmapRes[i])
+			}
+		}
+	})
 }
 
 func TestSIMDSimpleAndNot(t *testing.T) {
 	var (
-		bitmapA   = make([]byte, bitmapLength)
-		bitmapB   = make([]byte, bitmapLength)
-		bitmapRes = make([]byte, bitmapLength)
+		bitmapA = make([]byte, bitmapLength)
+		bitmapB = make([]byte, bitmapLength)
 	)
 
-	for i := 0; i < len(bitmapRes); i++ {
+	for i := 0; i < len(bitmapA); i++ {
 		bitmapA[i] = 255
 		bitmapB[i] = ^(byte(1) << 5)
 	}
 
-	andnotSIMD(bitmapA, bitmapB, bitmapRes)
+	t.Run("go", func(t *testing.T) {
+		var bitmapRes = make([]byte, bitmapLength)
+		andnot(bitmapA, bitmapB, bitmapRes)
 
-	var expected byte = 1 << 5
-	for i := 0; i < len(bitmapRes); i++ {
-		if bitmapRes[i] != byte(expected) {
-			t.Fatalf("byte %d of result is %d (expected %d)", i, bitmapRes[i], expected)
+		var expected byte = 1 << 5
+		for i := 0; i < len(bitmapRes); i++ {
+			if bitmapRes[i] != byte(expected) {
+				t.Fatalf("byte %d of result is %d (expected %d)", i, bitmapRes[i], expected)
+			}
 		}
-	}
+	})
+
+	t.Run("scalar", func(t *testing.T) {
+		var bitmapRes = make([]byte, bitmapLength)
+		andnotScalar(bitmapA, bitmapB, bitmapRes)
+
+		var expected byte = 1 << 5
+		for i := 0; i < len(bitmapRes); i++ {
+			if bitmapRes[i] != byte(expected) {
+				t.Fatalf("byte %d of result is %d (expected %d)", i, bitmapRes[i], expected)
+			}
+		}
+	})
+
+	t.Run("simd", func(t *testing.T) {
+		var bitmapRes = make([]byte, bitmapLength)
+		andnotSIMD(bitmapA, bitmapB, bitmapRes)
+
+		var expected byte = 1 << 5
+		for i := 0; i < len(bitmapRes); i++ {
+			if bitmapRes[i] != byte(expected) {
+				t.Fatalf("byte %d of result is %d (expected %d)", i, bitmapRes[i], expected)
+			}
+		}
+	})
 }
 
 func TestSimpleBitmapIndex(t *testing.T) {
@@ -115,6 +197,19 @@ func TestSIMDBitmapIndex(t *testing.T) {
 
 	andnotSIMD(terrace, expensive, resBitmap)
 	andSIMD(reservations, resBitmap, resBitmap)
+
+	resRestaurants := indexes(resBitmap)
+
+	t.Log(len(resRestaurants))
+}
+
+func TestScalarBitmapIndex(t *testing.T) {
+	_, _, terrace, reservations, _, expensive := initData()
+
+	resBitmap := make([]byte, bitmapLength)
+
+	andnotScalar(terrace, expensive, resBitmap)
+	andScalar(reservations, resBitmap, resBitmap)
 
 	resRestaurants := indexes(resBitmap)
 
@@ -144,5 +239,18 @@ func BenchmarkSimpleSIMDBitmapIndex(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		andnotSIMD(terrace, expensive, resBitmap)
 		andSIMD(reservations, resBitmap, resBitmap)
+	}
+}
+
+func BenchmarkSimpleScalarBitmapIndex(b *testing.B) {
+	_, _, terrace, reservations, _, expensive := initData()
+
+	resBitmap := make([]byte, bitmapLength)
+
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		andnotScalar(terrace, expensive, resBitmap)
+		andScalar(reservations, resBitmap, resBitmap)
 	}
 }

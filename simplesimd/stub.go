@@ -7,3 +7,9 @@ func andSIMD(a []byte, b []byte, res []byte)
 func orSIMD(a []byte, b []byte, res []byte)
 
 func andnotSIMD(a []byte, b []byte, res []byte)
+
+func andScalar(a []byte, b []byte, res []byte)
+
+func orScalar(a []byte, b []byte, res []byte)
+
+func andnotScalar(a []byte, b []byte, res []byte)

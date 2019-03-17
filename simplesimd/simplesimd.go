@@ -57,3 +57,19 @@ loop:
 		goto loop
 	}
 }
+
+func or(a []byte, b []byte, res []byte) {
+	if len(a) != len(b) || len(b) != len(res) {
+		return
+	}
+
+	i := 0
+	l := len(a)
+
+loop:
+	res[i] = a[i] | b[i]
+	i++
+	if i != l {
+		goto loop
+	}
+}
