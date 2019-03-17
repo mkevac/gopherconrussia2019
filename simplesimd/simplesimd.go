@@ -4,10 +4,10 @@ package simplesimd
 
 import "math/rand"
 
-func fill(b []byte, probability float32) {
+func fill(r *rand.Rand, b []byte, probability float32) {
 	for i := 0; i < len(b); i++ {
 		for j := uint(0); j < 8; j++ {
-			if rand.Float32() < probability {
+			if r.Float32() < probability {
 				b[i] |= 1 << j
 			}
 		}
@@ -32,14 +32,8 @@ func and(a []byte, b []byte, res []byte) {
 	}
 }
 
-func or(a []byte, b []byte, res []byte) {
+func andnot(a []byte, b []byte, res []byte) {
 	for i := 0; i < len(a); i++ {
-		res[i] = a[i] | b[i]
-	}
-}
-
-func not(a []byte, res []byte) {
-	for i := 0; i < len(a); i++ {
-		res[i] = ^a[i]
+		res[i] = a[i] & ^b[i]
 	}
 }
