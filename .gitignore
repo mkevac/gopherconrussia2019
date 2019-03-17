@@ -1,0 +1,9 @@
+roar/.idea/
+roar/cpu.out
+roar/roar.test
+simple/.idea/
+simple/cpu.out
+simple/simple.test
+simplesimd/.idea/
+simplesimd/cpu.out
+simplesimd/simplesimd.test
