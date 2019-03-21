@@ -4,18 +4,10 @@
 
 // func andSIMD(a []byte, b []byte, res []byte)
 TEXT ·andSIMD(SB), NOSPLIT, $0-72
-	MOVQ   a_base+0(FP), AX
-	MOVQ   b_base+24(FP), CX
-	MOVQ   res_base+48(FP), DX
-	MOVQ   a_len+8(FP), BX
-	VXORPS Y0, Y0, Y0
-	VXORPS Y1, Y1, Y1
-	VXORPS Y2, Y2, Y2
-	VXORPS Y3, Y3, Y3
-	VXORPS Y4, Y4, Y4
-	VXORPS Y5, Y5, Y5
-	VXORPS Y6, Y6, Y6
-	VXORPS Y7, Y7, Y7
+	MOVQ a_base+0(FP), AX
+	MOVQ b_base+24(FP), CX
+	MOVQ res_base+48(FP), DX
+	MOVQ a_len+8(FP), BX
 
 blockloop:
 	CMPQ    BX, $0x00000100
@@ -55,18 +47,10 @@ tail:
 
 // func orSIMD(a []byte, b []byte, res []byte)
 TEXT ·orSIMD(SB), NOSPLIT, $0-72
-	MOVQ   a_base+0(FP), AX
-	MOVQ   b_base+24(FP), CX
-	MOVQ   res_base+48(FP), DX
-	MOVQ   a_len+8(FP), BX
-	VXORPS Y0, Y0, Y0
-	VXORPS Y1, Y1, Y1
-	VXORPS Y2, Y2, Y2
-	VXORPS Y3, Y3, Y3
-	VXORPS Y4, Y4, Y4
-	VXORPS Y5, Y5, Y5
-	VXORPS Y6, Y6, Y6
-	VXORPS Y7, Y7, Y7
+	MOVQ a_base+0(FP), AX
+	MOVQ b_base+24(FP), CX
+	MOVQ res_base+48(FP), DX
+	MOVQ a_len+8(FP), BX
 
 blockloop:
 	CMPQ    BX, $0x00000100
@@ -106,18 +90,10 @@ tail:
 
 // func andnotSIMD(a []byte, b []byte, res []byte)
 TEXT ·andnotSIMD(SB), NOSPLIT, $0-72
-	MOVQ   a_base+0(FP), AX
-	MOVQ   b_base+24(FP), CX
-	MOVQ   res_base+48(FP), DX
-	MOVQ   a_len+8(FP), BX
-	VXORPS Y0, Y0, Y0
-	VXORPS Y1, Y1, Y1
-	VXORPS Y2, Y2, Y2
-	VXORPS Y3, Y3, Y3
-	VXORPS Y4, Y4, Y4
-	VXORPS Y5, Y5, Y5
-	VXORPS Y6, Y6, Y6
-	VXORPS Y7, Y7, Y7
+	MOVQ a_base+0(FP), AX
+	MOVQ b_base+24(FP), CX
+	MOVQ res_base+48(FP), DX
+	MOVQ a_len+8(FP), BX
 
 blockloop:
 	CMPQ    BX, $0x00000100

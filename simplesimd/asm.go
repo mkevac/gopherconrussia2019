@@ -72,17 +72,6 @@ func genSIMDop(op string) {
 	res := Mem{Base: Load(Param("res").Base(), GP64())}
 	n := Load(Param("a").Len(), GP64())
 
-	// Allocate accumulation registers.
-	acc := make([]VecVirtual, unroll)
-	for i := 0; i < unroll; i++ {
-		acc[i] = YMM()
-	}
-
-	// Zero initialization.
-	for i := 0; i < unroll; i++ {
-		VXORPS(acc[i], acc[i], acc[i])
-	}
-
 	blocksize := 32 * unroll
 
 	Label("blockloop")
