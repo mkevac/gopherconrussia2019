@@ -70,6 +70,19 @@ func BenchmarkBiggerBatchBitmapIndexInlined(b *testing.B) {
 	}
 }
 
+func BenchmarkBiggerBatchBitmapIndexNoBoundsCheck(b *testing.B) {
+	_, _, terrace, reservations, _, expensive := initData()
+
+	resBitmap := make([]uint64, bitmapLength)
+
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		andnotNoBoundsCheck(terrace, expensive, resBitmap)
+		andNoBoundsCheck(reservations, resBitmap, resBitmap)
+	}
+}
+
 func BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck(b *testing.B) {
 	_, _, terrace, reservations, _, expensive := initData()
 

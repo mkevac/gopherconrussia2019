@@ -68,50 +68,6 @@ loop:
 	}
 }
 
-func or(a []byte, b []byte, res []byte) {
-	for i := 0; i < len(a); i++ {
-		res[i] = a[i] | b[i]
-	}
-}
-
-func orInlined(a []byte, b []byte, res []byte) {
-	i := 0
-	l := len(a)
-
-loop:
-	res[i] = a[i] | b[i]
-	i++
-	if i != l {
-		goto loop
-	}
-}
-
-func orNoBoundsCheck(a []byte, b []byte, res []byte) {
-	if len(a) != len(b) || len(b) != len(res) {
-		return
-	}
-
-	for i := 0; i < len(a); i++ {
-		res[i] = a[i] | b[i]
-	}
-}
-
-func orInlinedAndNoBoundsCheck(a []byte, b []byte, res []byte) {
-	if len(a) != len(b) || len(b) != len(res) {
-		return
-	}
-
-	i := 0
-	l := len(a)
-
-loop:
-	res[i] = a[i] | b[i]
-	i++
-	if i != l {
-		goto loop
-	}
-}
-
 func andnot(a []byte, b []byte, res []byte) {
 	for i := 0; i < len(a); i++ {
 		res[i] = a[i] & ^b[i]

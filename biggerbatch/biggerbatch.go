@@ -42,6 +42,16 @@ loop:
 	}
 }
 
+func andNoBoundsCheck(a []uint64, b []uint64, res []uint64) {
+	if len(a) != len(b) || len(b) != len(res) {
+		return
+	}
+
+	for i := 0; i < len(a); i++ {
+		res[i] = a[i] & b[i]
+	}
+}
+
 func andInlinedAndNoBoundsCheck(a []uint64, b []uint64, res []uint64) {
 	if len(a) != len(b) || len(b) != len(res) {
 		return
@@ -52,40 +62,6 @@ func andInlinedAndNoBoundsCheck(a []uint64, b []uint64, res []uint64) {
 
 loop:
 	res[i] = a[i] & b[i]
-	i++
-	if i != l {
-		goto loop
-	}
-}
-
-func or(a []uint64, b []uint64, res []uint64) {
-	for i := 0; i < len(a); i++ {
-		res[i] = a[i] | b[i]
-	}
-}
-
-func orInlined(a []uint64, b []uint64, res []uint64) {
-	i := 0
-	l := len(a)
-
-loop:
-	res[i] = a[i] | b[i]
-	i++
-	if i != l {
-		goto loop
-	}
-}
-
-func orInlinedAndNoBoundsCheck(a []uint64, b []uint64, res []uint64) {
-	if len(a) != len(b) || len(b) != len(res) {
-		return
-	}
-
-	i := 0
-	l := len(a)
-
-loop:
-	res[i] = a[i] | b[i]
 	i++
 	if i != l {
 		goto loop
@@ -107,6 +83,16 @@ loop:
 	i++
 	if i != l {
 		goto loop
+	}
+}
+
+func andnotNoBoundsCheck(a []uint64, b []uint64, res []uint64) {
+	if len(a) != len(b) || len(b) != len(res) {
+		return
+	}
+
+	for i := 0; i < len(a); i++ {
+		res[i] = a[i] & ^b[i]
 	}
 }
 
