@@ -202,3 +202,66 @@ loop:
 
 done:
 	RET
+
+// func andScalarFaster(a []byte, b []byte, res []byte)
+TEXT ·andScalarFaster(SB), NOSPLIT, $0-72
+	MOVQ a_base+0(FP), AX
+	MOVQ b_base+24(FP), CX
+	MOVQ res_base+48(FP), DX
+	MOVQ a_len+8(FP), BX
+	XORQ BP, BP
+
+loop:
+	CMPQ BX, BP
+	JE   done
+	MOVQ (AX)(BP*1), SI
+	MOVQ (CX)(BP*1), DI
+	ANDQ SI, DI
+	MOVQ DI, (DX)(BP*1)
+	ADDQ $0x08, BP
+	JMP  loop
+
+done:
+	RET
+
+// func orScalarFaster(a []byte, b []byte, res []byte)
+TEXT ·orScalarFaster(SB), NOSPLIT, $0-72
+	MOVQ a_base+0(FP), AX
+	MOVQ b_base+24(FP), CX
+	MOVQ res_base+48(FP), DX
+	MOVQ a_len+8(FP), BX
+	XORQ BP, BP
+
+loop:
+	CMPQ BX, BP
+	JE   done
+	MOVQ (AX)(BP*1), SI
+	MOVQ (CX)(BP*1), DI
+	ORQ  SI, DI
+	MOVQ DI, (DX)(BP*1)
+	ADDQ $0x08, BP
+	JMP  loop
+
+done:
+	RET
+
+// func andnotScalarFaster(a []byte, b []byte, res []byte)
+TEXT ·andnotScalarFaster(SB), NOSPLIT, $0-72
+	MOVQ a_base+0(FP), AX
+	MOVQ b_base+24(FP), CX
+	MOVQ res_base+48(FP), DX
+	MOVQ a_len+8(FP), BX
+	XORQ BP, BP
+
+loop:
+	CMPQ  BX, BP
+	JE    done
+	MOVQ  (AX)(BP*1), SI
+	MOVQ  (CX)(BP*1), DI
+	ANDNQ SI, DI, DI
+	MOVQ  DI, (DX)(BP*1)
+	ADDQ  $0x08, BP
+	JMP   loop
+
+done:
+	RET

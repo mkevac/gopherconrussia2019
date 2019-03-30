@@ -55,6 +55,19 @@ func TestSIMDSimpleAnd(t *testing.T) {
 		}
 	})
 
+	t.Run("scalar faster", func(t *testing.T) {
+
+		var bitmapRes = make([]byte, bitmapLength)
+
+		andScalarFaster(bitmapA, bitmapB, bitmapRes)
+
+		for i := 0; i < len(bitmapRes); i++ {
+			if bitmapRes[i] != 2 {
+				t.Fatalf("byte %d of result is %d (expected 2)", i, bitmapRes[i])
+			}
+		}
+	})
+
 	t.Run("simd", func(t *testing.T) {
 
 		var bitmapRes = make([]byte, bitmapLength)
@@ -91,6 +104,17 @@ func TestSIMDSimpleOr(t *testing.T) {
 		}
 	})
 
+	t.Run("scalar faster", func(t *testing.T) {
+		var bitmapRes = make([]byte, bitmapLength)
+		orScalarFaster(bitmapA, bitmapB, bitmapRes)
+
+		for i := 0; i < len(bitmapRes); i++ {
+			if bitmapRes[i] != 7 {
+				t.Fatalf("byte %d of result is %d (expected 7)", i, bitmapRes[i])
+			}
+		}
+	})
+
 	t.Run("simd", func(t *testing.T) {
 		var bitmapRes = make([]byte, bitmapLength)
 		orSIMD(bitmapA, bitmapB, bitmapRes)
@@ -117,6 +141,18 @@ func TestSIMDSimpleAndNot(t *testing.T) {
 	t.Run("scalar", func(t *testing.T) {
 		var bitmapRes = make([]byte, bitmapLength)
 		andnotScalar(bitmapA, bitmapB, bitmapRes)
+
+		var expected byte = 1 << 5
+		for i := 0; i < len(bitmapRes); i++ {
+			if bitmapRes[i] != byte(expected) {
+				t.Fatalf("byte %d of result is %d (expected %d)", i, bitmapRes[i], expected)
+			}
+		}
+	})
+
+	t.Run("scalar faster", func(t *testing.T) {
+		var bitmapRes = make([]byte, bitmapLength)
+		andnotScalarFaster(bitmapA, bitmapB, bitmapRes)
 
 		var expected byte = 1 << 5
 		for i := 0; i < len(bitmapRes); i++ {
@@ -165,6 +201,19 @@ func TestScalarBitmapIndex(t *testing.T) {
 	t.Log(len(resRestaurants))
 }
 
+func TestScalar2BitmapIndex(t *testing.T) {
+	_, _, terrace, reservations, _, expensive := initData()
+
+	resBitmap := make([]byte, bitmapLength)
+
+	andnotScalarFaster(terrace, expensive, resBitmap)
+	andScalarFaster(reservations, resBitmap, resBitmap)
+
+	resRestaurants := indexes(resBitmap)
+
+	t.Log(len(resRestaurants))
+}
+
 func BenchmarkSimpleSIMDBitmapIndex(b *testing.B) {
 	_, _, terrace, reservations, _, expensive := initData()
 
@@ -177,6 +226,20 @@ func BenchmarkSimpleSIMDBitmapIndex(b *testing.B) {
 		andSIMD(reservations, resBitmap, resBitmap)
 	}
 }
+
+func BenchmarkSimpleScalarFasterBitmapIndex(b *testing.B) {
+	_, _, terrace, reservations, _, expensive := initData()
+
+	resBitmap := make([]byte, bitmapLength)
+
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		andnotScalarFaster(terrace, expensive, resBitmap)
+		andScalarFaster(reservations, resBitmap, resBitmap)
+	}
+}
+
 
 func BenchmarkSimpleScalarBitmapIndex(b *testing.B) {
 	_, _, terrace, reservations, _, expensive := initData()

@@ -8,6 +8,53 @@ import (
 	. "github.com/mmcloughlin/avo/reg"
 )
 
+func genScalarFasterOp(op string) {
+	switch op {
+	case "and":
+		TEXT("andScalarFaster", NOSPLIT, "func(a []byte, b []byte, res []byte)")
+	case "or":
+		TEXT("orScalarFaster", NOSPLIT, "func(a []byte, b []byte, res []byte)")
+	case "andnot":
+		TEXT("andnotScalarFaster", NOSPLIT, "func(a []byte, b []byte, res []byte)")
+	}
+
+	a := Mem{Base: Load(Param("a").Base(), GP64())}
+	b := Mem{Base: Load(Param("b").Base(), GP64())}
+	res := Mem{Base: Load(Param("res").Base(), GP64())}
+	n := Load(Param("a").Len(), GP64())
+
+	ir := GP64()
+	XORQ(ir, ir)
+
+	ar := GP64()
+	br := GP64()
+
+	Label("loop")
+	CMPQ(n, ir)
+	JE(LabelRef("done"))
+
+	MOVQ(a.Idx(ir, 1), ar)
+	MOVQ(b.Idx(ir, 1), br)
+
+	switch op {
+	case "and":
+		ANDQ(ar, br)
+	case "or":
+		ORQ(ar, br)
+	case "andnot":
+		ANDNQ(ar, br, br)
+	}
+
+	MOVQ(br, res.Idx(ir, 1))
+
+	ADDQ(Imm(8), ir)
+
+	JMP(LabelRef("loop"))
+
+	Label("done")
+	RET()
+}
+
 func genScalarOp(op string) {
 	switch op {
 	case "and":
@@ -122,6 +169,10 @@ func main() {
 	genScalarOp("and")
 	genScalarOp("or")
 	genScalarOp("andnot")
+
+	genScalarFasterOp("and")
+	genScalarFasterOp("or")
+	genScalarFasterOp("andnot")
 
 	Generate()
 }

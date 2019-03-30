@@ -13,3 +13,9 @@ func andScalar(a []byte, b []byte, res []byte)
 func orScalar(a []byte, b []byte, res []byte)
 
 func andnotScalar(a []byte, b []byte, res []byte)
+
+func andScalarFaster(a []byte, b []byte, res []byte)
+
+func orScalarFaster(a []byte, b []byte, res []byte)
+
+func andnotScalarFaster(a []byte, b []byte, res []byte)
