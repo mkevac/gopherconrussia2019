@@ -42,6 +42,16 @@ loop:
 	}
 }
 
+func andNoBoundsCheck(a []byte, b []byte, res []byte) {
+	if len(a) != len(b) || len(b) != len(res) {
+		return
+	}
+
+	for i := 0; i < len(a); i++ {
+		res[i] = a[i] & b[i]
+	}
+}
+
 func andInlinedAndNoBoundsCheck(a []byte, b []byte, res []byte) {
 	if len(a) != len(b) || len(b) != len(res) {
 		return
@@ -76,6 +86,16 @@ loop:
 	}
 }
 
+func orNoBoundsCheck(a []byte, b []byte, res []byte) {
+	if len(a) != len(b) || len(b) != len(res) {
+		return
+	}
+
+	for i := 0; i < len(a); i++ {
+		res[i] = a[i] | b[i]
+	}
+}
+
 func orInlinedAndNoBoundsCheck(a []byte, b []byte, res []byte) {
 	if len(a) != len(b) || len(b) != len(res) {
 		return
@@ -107,6 +127,16 @@ loop:
 	i++
 	if i != l {
 		goto loop
+	}
+}
+
+func andnotNoBoundsCheck(a []byte, b []byte, res []byte) {
+	if len(a) != len(b) || len(b) != len(res) {
+		return
+	}
+
+	for i := 0; i < len(a); i++ {
+		res[i] = a[i] & ^b[i]
 	}
 }
 

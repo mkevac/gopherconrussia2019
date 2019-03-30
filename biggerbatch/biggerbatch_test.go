@@ -1,4 +1,4 @@
-package simple
+package biggerbatch
 
 import (
 	"math/rand"
@@ -7,16 +7,16 @@ import (
 )
 
 const restaurants = 65536
-const bitmapLength = restaurants / 8 // 8192 bytes
+const bitmapLength = restaurants / (8 * 8) // 8192 bytes (1024 elements)
 
-func initData() ([]byte, []byte, []byte, []byte, []byte, []byte) {
+func initData() ([]uint64, []uint64, []uint64, []uint64, []uint64, []uint64) {
 	var (
-		nearMetro      = make([]byte, bitmapLength)
-		privateParking = make([]byte, bitmapLength)
-		terrace        = make([]byte, bitmapLength)
-		reservations   = make([]byte, bitmapLength)
-		veganFriendly  = make([]byte, bitmapLength)
-		expensive      = make([]byte, bitmapLength)
+		nearMetro      = make([]uint64, bitmapLength)
+		privateParking = make([]uint64, bitmapLength)
+		terrace        = make([]uint64, bitmapLength)
+		reservations   = make([]uint64, bitmapLength)
+		veganFriendly  = make([]uint64, bitmapLength)
+		expensive      = make([]uint64, bitmapLength)
 	)
 
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -31,10 +31,10 @@ func initData() ([]byte, []byte, []byte, []byte, []byte, []byte) {
 	return nearMetro, privateParking, terrace, reservations, veganFriendly, expensive
 }
 
-func TestSimpleBitmapIndex(t *testing.T) {
+func TestBiggerBatchBitmapIndex(t *testing.T) {
 	_, _, terrace, reservations, _, expensive := initData()
 
-	resBitmap := make([]byte, bitmapLength)
+	resBitmap := make([]uint64, bitmapLength)
 
 	andnot(terrace, expensive, resBitmap)
 	and(reservations, resBitmap, resBitmap)
@@ -44,10 +44,10 @@ func TestSimpleBitmapIndex(t *testing.T) {
 	t.Log(len(resRestaurants))
 }
 
-func BenchmarkSimpleBitmapIndex(b *testing.B) {
+func BenchmarkBiggerBatchBitmapIndex(b *testing.B) {
 	_, _, terrace, reservations, _, expensive := initData()
 
-	resBitmap := make([]byte, bitmapLength)
+	resBitmap := make([]uint64, bitmapLength)
 
 	b.ResetTimer()
 
@@ -57,10 +57,10 @@ func BenchmarkSimpleBitmapIndex(b *testing.B) {
 	}
 }
 
-func BenchmarkSimpleBitmapIndexInlined(b *testing.B) {
+func BenchmarkBiggerBatchBitmapIndexInlined(b *testing.B) {
 	_, _, terrace, reservations, _, expensive := initData()
 
-	resBitmap := make([]byte, bitmapLength)
+	resBitmap := make([]uint64, bitmapLength)
 
 	b.ResetTimer()
 
@@ -70,23 +70,10 @@ func BenchmarkSimpleBitmapIndexInlined(b *testing.B) {
 	}
 }
 
-func BenchmarkSimpleBitmapIndexNoBoundsCheck(b *testing.B) {
+func BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck(b *testing.B) {
 	_, _, terrace, reservations, _, expensive := initData()
 
-	resBitmap := make([]byte, bitmapLength)
-
-	b.ResetTimer()
-
-	for i := 0; i < b.N; i++ {
-		andnotNoBoundsCheck(terrace, expensive, resBitmap)
-		andNoBoundsCheck(reservations, resBitmap, resBitmap)
-	}
-}
-
-func BenchmarkSimpleBitmapIndexInlinedAndNoBoundsCheck(b *testing.B) {
-	_, _, terrace, reservations, _, expensive := initData()
-
-	resBitmap := make([]byte, bitmapLength)
+	resBitmap := make([]uint64, bitmapLength)
 
 	b.ResetTimer()
 
