@@ -1,0 +1,11 @@
+name                   time/op
+RoaringBitmapIndex-8   10.9µs ±17%
+CRoaringBitmapIndex-8  10.6µs ±16%
+
+name                   alloc/op
+RoaringBitmapIndex-8   13.2kB ± 1%
+CRoaringBitmapIndex-8   16.0B ± 0%
+
+name                   allocs/op
+RoaringBitmapIndex-8     12.0 ± 0%
+CRoaringBitmapIndex-8    2.00 ± 0%

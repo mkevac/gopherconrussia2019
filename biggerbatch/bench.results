@@ -1,0 +1,25 @@
+goos: linux
+goarch: amd64
+pkg: github.com/mkevac/gopherconrussia2019/biggerbatch
+BenchmarkBiggerBatchBitmapIndex-8                          	 1000000	      1139 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndex-8                          	 1000000	      1137 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndex-8                          	 1000000	      1136 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndex-8                          	 1000000	      1132 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndex-8                          	 1000000	      1139 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexInlined-8                   	 1000000	      1380 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexInlined-8                   	 1000000	      1386 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexInlined-8                   	 1000000	      1386 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexInlined-8                   	 1000000	      1389 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexInlined-8                   	 1000000	      1386 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-8             	 1000000	      1014 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-8             	 1000000	      1014 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-8             	 1000000	      1015 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-8             	 1000000	      1015 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-8             	 1000000	      1015 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8   	 1000000	      1396 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8   	 1000000	      1384 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8   	 1000000	      1392 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8   	 1000000	      1391 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8   	 1000000	      1391 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/mkevac/gopherconrussia2019/biggerbatch	25.185s

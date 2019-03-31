@@ -1,0 +1,20 @@
+goos: linux
+goarch: amd64
+pkg: github.com/mkevac/gopherconrussia2019/simplesimd
+BenchmarkSimpleSIMDBitmapIndex-8           	10000000	       154 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleSIMDBitmapIndex-8           	10000000	       154 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleSIMDBitmapIndex-8           	10000000	       154 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleSIMDBitmapIndex-8           	10000000	       154 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleSIMDBitmapIndex-8           	10000000	       158 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleScalarFasterBitmapIndex-8   	 1000000	      1039 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleScalarFasterBitmapIndex-8   	 1000000	      1039 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleScalarFasterBitmapIndex-8   	 1000000	      1038 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleScalarFasterBitmapIndex-8   	 1000000	      1037 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleScalarFasterBitmapIndex-8   	 1000000	      1039 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleScalarBitmapIndex-8         	 1000000	      1244 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleScalarBitmapIndex-8         	 1000000	      1253 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleScalarBitmapIndex-8         	 1000000	      1230 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleScalarBitmapIndex-8         	 1000000	      1246 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleScalarBitmapIndex-8         	 1000000	      1245 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/mkevac/gopherconrussia2019/simplesimd	20.352s

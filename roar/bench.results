@@ -1,0 +1,15 @@
+goos: linux
+goarch: amd64
+pkg: github.com/mkevac/gopherconrussia2019/roar
+BenchmarkRoaringBitmapIndex-8    	  200000	     11522 ns/op	   13280 B/op	      12 allocs/op
+BenchmarkRoaringBitmapIndex-8    	  200000	     12724 ns/op	   13280 B/op	      12 allocs/op
+BenchmarkRoaringBitmapIndex-8    	  200000	     10170 ns/op	   13024 B/op	      12 allocs/op
+BenchmarkRoaringBitmapIndex-8    	  200000	     10119 ns/op	   13280 B/op	      12 allocs/op
+BenchmarkRoaringBitmapIndex-8    	  200000	     10019 ns/op	   13024 B/op	      12 allocs/op
+BenchmarkCRoaringBitmapIndex-8   	  200000	     11936 ns/op	      16 B/op	       2 allocs/op
+BenchmarkCRoaringBitmapIndex-8   	  100000	     12385 ns/op	      16 B/op	       2 allocs/op
+BenchmarkCRoaringBitmapIndex-8   	  200000	     10492 ns/op	      16 B/op	       2 allocs/op
+BenchmarkCRoaringBitmapIndex-8   	  200000	      9506 ns/op	      16 B/op	       2 allocs/op
+BenchmarkCRoaringBitmapIndex-8   	  200000	      8919 ns/op	      16 B/op	       2 allocs/op
+PASS
+ok  	github.com/mkevac/gopherconrussia2019/roar	23.257s

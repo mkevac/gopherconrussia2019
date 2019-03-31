@@ -1,0 +1,25 @@
+goos: linux
+goarch: amd64
+pkg: github.com/mkevac/gopherconrussia2019/simple
+BenchmarkSimpleBitmapIndex-8                          	  200000	      8985 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndex-8                          	  200000	      8940 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndex-8                          	  200000	      8960 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndex-8                          	  200000	      8914 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndex-8                          	  200000	      8982 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexInlined-8                   	  200000	      9024 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexInlined-8                   	  200000	      9020 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexInlined-8                   	  200000	      9067 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexInlined-8                   	  200000	      9006 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexInlined-8                   	  200000	      9055 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexNoBoundsCheck-8             	  200000	      8022 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexNoBoundsCheck-8             	  200000	      8045 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexNoBoundsCheck-8             	  200000	      7991 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexNoBoundsCheck-8             	  200000	      8063 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexNoBoundsCheck-8             	  200000	      7996 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexInlinedAndNoBoundsCheck-8   	  200000	      8013 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexInlinedAndNoBoundsCheck-8   	  200000	      8056 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexInlinedAndNoBoundsCheck-8   	  200000	      8019 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexInlinedAndNoBoundsCheck-8   	  200000	      8119 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSimpleBitmapIndexInlinedAndNoBoundsCheck-8   	  200000	      8152 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/mkevac/gopherconrussia2019/simple	36.097s
