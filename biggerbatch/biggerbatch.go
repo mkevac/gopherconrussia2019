@@ -32,12 +32,11 @@ func and(a []uint64, b []uint64, res []uint64) {
 
 func andInlined(a []uint64, b []uint64, res []uint64) {
 	i := 0
-	l := len(a)
 
 loop:
-	res[i] = a[i] & b[i]
-	i++
-	if i != l {
+	if i < len(a) {
+		res[i] = a[i] & b[i]
+		i++
 		goto loop
 	}
 }
@@ -58,12 +57,11 @@ func andInlinedAndNoBoundsCheck(a []uint64, b []uint64, res []uint64) {
 	}
 
 	i := 0
-	l := len(a)
 
 loop:
-	res[i] = a[i] & b[i]
-	i++
-	if i != l {
+	if i < len(a) {
+		res[i] = a[i] & b[i]
+		i++
 		goto loop
 	}
 }
@@ -76,12 +74,11 @@ func andnot(a []uint64, b []uint64, res []uint64) {
 
 func andnotInlined(a []uint64, b []uint64, res []uint64) {
 	i := 0
-	l := len(a)
 
 loop:
-	res[i] = a[i] & ^b[i]
-	i++
-	if i != l {
+	if i < len(a) {
+		res[i] = a[i] & ^b[i]
+		i++
 		goto loop
 	}
 }
@@ -102,12 +99,11 @@ func andnotInlinedAndNoBoundsCheck(a []uint64, b []uint64, res []uint64) {
 	}
 
 	i := 0
-	l := len(a)
 
 loop:
-	res[i] = a[i] & ^b[i]
-	i++
-	if i != l {
+	if i < len(a) {
+		res[i] = a[i] & ^b[i]
+		i++
 		goto loop
 	}
 }
