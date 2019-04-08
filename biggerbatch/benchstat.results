@@ -1,17 +1,5 @@
-name                                             time/op
-BiggerBatchBitmapIndex-8                         1.14µs ± 0%
-BiggerBatchBitmapIndexInlined-8                  1.39µs ± 0%
-BiggerBatchBitmapIndexNoBoundsCheck-8            1.01µs ± 0%
-BiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8  1.39µs ± 0%
-
-name                                             alloc/op
-BiggerBatchBitmapIndex-8                          0.00B     
-BiggerBatchBitmapIndexInlined-8                   0.00B     
-BiggerBatchBitmapIndexNoBoundsCheck-8             0.00B     
-BiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8   0.00B     
-
-name                                             allocs/op
-BiggerBatchBitmapIndex-8                           0.00     
-BiggerBatchBitmapIndexInlined-8                    0.00     
-BiggerBatchBitmapIndexNoBoundsCheck-8              0.00     
-BiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8    0.00     
+name                                              time/op
+BiggerBatchBitmapIndex-12                         1.18µs ± 0%
+BiggerBatchBitmapIndexInlined-12                  1.31µs ± 0%
+BiggerBatchBitmapIndexNoBoundsCheck-12            1.06µs ± 0%
+BiggerBatchBitmapIndexInlinedAndNoBoundsCheck-12  1.12µs ± 0%

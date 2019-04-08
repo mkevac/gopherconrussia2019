@@ -1,25 +1,25 @@
 goos: linux
 goarch: amd64
 pkg: github.com/mkevac/gopherconrussia2019/biggerbatch
-BenchmarkBiggerBatchBitmapIndex-8                          	 1000000	      1139 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndex-8                          	 1000000	      1137 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndex-8                          	 1000000	      1136 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndex-8                          	 1000000	      1132 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndex-8                          	 1000000	      1139 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexInlined-8                   	 1000000	      1380 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexInlined-8                   	 1000000	      1386 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexInlined-8                   	 1000000	      1386 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexInlined-8                   	 1000000	      1389 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexInlined-8                   	 1000000	      1386 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-8             	 1000000	      1014 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-8             	 1000000	      1014 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-8             	 1000000	      1015 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-8             	 1000000	      1015 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-8             	 1000000	      1015 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8   	 1000000	      1396 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8   	 1000000	      1384 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8   	 1000000	      1392 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8   	 1000000	      1391 ns/op	       0 B/op	       0 allocs/op
-BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8   	 1000000	      1391 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBiggerBatchBitmapIndex-12                           	 1000000	      1182 ns/op
+BenchmarkBiggerBatchBitmapIndex-12                           	 1000000	      1186 ns/op
+BenchmarkBiggerBatchBitmapIndex-12                           	 1000000	      1187 ns/op
+BenchmarkBiggerBatchBitmapIndex-12                           	 1000000	      1180 ns/op
+BenchmarkBiggerBatchBitmapIndex-12                           	 1000000	      1181 ns/op
+BenchmarkBiggerBatchBitmapIndexInlined-12                    	 1000000	      1315 ns/op
+BenchmarkBiggerBatchBitmapIndexInlined-12                    	 1000000	      1316 ns/op
+BenchmarkBiggerBatchBitmapIndexInlined-12                    	 1000000	      1307 ns/op
+BenchmarkBiggerBatchBitmapIndexInlined-12                    	 1000000	      1312 ns/op
+BenchmarkBiggerBatchBitmapIndexInlined-12                    	 1000000	      1314 ns/op
+BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-12              	 1000000	      1059 ns/op
+BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-12              	 1000000	      1058 ns/op
+BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-12              	 1000000	      1059 ns/op
+BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-12              	 1000000	      1059 ns/op
+BenchmarkBiggerBatchBitmapIndexNoBoundsCheck-12              	 1000000	      1058 ns/op
+BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-12    	 1000000	      1123 ns/op
+BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-12    	 1000000	      1124 ns/op
+BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-12    	 1000000	      1120 ns/op
+BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-12    	 1000000	      1130 ns/op
+BenchmarkBiggerBatchBitmapIndexInlinedAndNoBoundsCheck-12    	 1000000	      1127 ns/op
 PASS
-ok  	github.com/mkevac/gopherconrussia2019/biggerbatch	25.185s
+ok  	github.com/mkevac/gopherconrussia2019/biggerbatch	23.915s

@@ -13,30 +13,29 @@
 ## Simple
 
 ```
-name                                        time/op
-SimpleBitmapIndex-8                         8.96µs ± 0%
-SimpleBitmapIndexInlined-8                  9.03µs ± 0%
-SimpleBitmapIndexNoBoundsCheck-8            8.02µs ± 0%
-SimpleBitmapIndexInlinedAndNoBoundsCheck-8  8.07µs ± 1%
+name                                         time/op
+SimpleBitmapIndex-12                         10.8µs ± 0%
+SimpleBitmapIndexInlined-12                  8.88µs ± 0%
+SimpleBitmapIndexInlinedAndNoBoundsCheck-12  8.33µs ± 0%
 ```
 
 ## Biggerbatch
 
 ```
-name                                             time/op
-BiggerBatchBitmapIndex-8                         1.14µs ± 0%
-BiggerBatchBitmapIndexInlined-8                  1.39µs ± 0%
-BiggerBatchBitmapIndexNoBoundsCheck-8            1.01µs ± 0%
-BiggerBatchBitmapIndexInlinedAndNoBoundsCheck-8  1.39µs ± 0%
+name                                              time/op
+BiggerBatchBitmapIndex-12                         1.18µs ± 0%
+BiggerBatchBitmapIndexInlined-12                  1.31µs ± 0%
+BiggerBatchBitmapIndexNoBoundsCheck-12            1.06µs ± 0%
+BiggerBatchBitmapIndexInlinedAndNoBoundsCheck-12  1.12µs ± 0%
 ```
 
 ## Simplesimd
 
 ```
-name                             time/op
-SimpleSIMDBitmapIndex-8           154ns ± 0%
-SimpleScalarFasterBitmapIndex-8  1.04µs ± 0%
-SimpleScalarBitmapIndex-8        1.24µs ± 1%
+name                              time/op
+SimpleSIMDBitmapIndex-12           160ns ± 0%
+SimpleScalarFasterBitmapIndex-12  1.06µs ± 1%
+SimpleScalarBitmapIndex-12        1.24µs ± 0%
 ```
 
 ## Roaring bitmaps

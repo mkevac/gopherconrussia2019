@@ -1,14 +1,4 @@
-name                             time/op
-SimpleSIMDBitmapIndex-8           154ns ± 0%
-SimpleScalarFasterBitmapIndex-8  1.04µs ± 0%
-SimpleScalarBitmapIndex-8        1.24µs ± 1%
-
-name                             alloc/op
-SimpleSIMDBitmapIndex-8           0.00B     
-SimpleScalarFasterBitmapIndex-8   0.00B     
-SimpleScalarBitmapIndex-8         0.00B     
-
-name                             allocs/op
-SimpleSIMDBitmapIndex-8            0.00     
-SimpleScalarFasterBitmapIndex-8    0.00     
-SimpleScalarBitmapIndex-8          0.00     
+name                              time/op
+SimpleSIMDBitmapIndex-12           160ns ± 0%
+SimpleScalarFasterBitmapIndex-12  1.06µs ± 1%
+SimpleScalarBitmapIndex-12        1.24µs ± 0%

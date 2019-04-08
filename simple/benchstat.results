@@ -1,17 +1,4 @@
-name                                        time/op
-SimpleBitmapIndex-8                         8.96µs ± 0%
-SimpleBitmapIndexInlined-8                  9.03µs ± 0%
-SimpleBitmapIndexNoBoundsCheck-8            8.02µs ± 0%
-SimpleBitmapIndexInlinedAndNoBoundsCheck-8  8.07µs ± 1%
-
-name                                        alloc/op
-SimpleBitmapIndex-8                          0.00B     
-SimpleBitmapIndexInlined-8                   0.00B     
-SimpleBitmapIndexNoBoundsCheck-8             0.00B     
-SimpleBitmapIndexInlinedAndNoBoundsCheck-8   0.00B     
-
-name                                        allocs/op
-SimpleBitmapIndex-8                           0.00     
-SimpleBitmapIndexInlined-8                    0.00     
-SimpleBitmapIndexNoBoundsCheck-8              0.00     
-SimpleBitmapIndexInlinedAndNoBoundsCheck-8    0.00     
+name                                         time/op
+SimpleBitmapIndex-12                         10.8µs ± 0%
+SimpleBitmapIndexInlined-12                  8.88µs ± 0%
+SimpleBitmapIndexInlinedAndNoBoundsCheck-12  8.33µs ± 0%
