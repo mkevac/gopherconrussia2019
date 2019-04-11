@@ -2,7 +2,7 @@
 
 ## Slides
 
-Gophercon Russia 2019 [PDF](Gophercon Russia 2019.pdf)
+Gophercon Russia 2019 [PDF](GopherconRussia2019.pdf)
 
 ## Code structure
 
